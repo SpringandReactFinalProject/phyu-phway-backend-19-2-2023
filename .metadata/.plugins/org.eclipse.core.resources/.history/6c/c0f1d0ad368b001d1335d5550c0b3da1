@@ -1,0 +1,12 @@
+package com.hostmdy.lawfirm.service;
+
+
+
+import com.hostmdy.lawfirm.domain.Lawer;
+
+public interface LawerService {
+	
+	Lawer saveOrUpdate(Lawer lawer);
+	
+
+}

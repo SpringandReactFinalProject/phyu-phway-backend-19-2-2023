@@ -1,0 +1,20 @@
+package com.hostmdy.lawfirm.resource;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hostmdy.lawfirm.service.LawerService;
+
+@RestController
+@RequestMapping("/api/lawfirm")
+public class LawerController {
+
+	
+	private final LawerService lawerService;
+
+	public LawerController(LawerService lawerService) {
+		super();
+		this.lawerService = lawerService;
+	}
+	
+}

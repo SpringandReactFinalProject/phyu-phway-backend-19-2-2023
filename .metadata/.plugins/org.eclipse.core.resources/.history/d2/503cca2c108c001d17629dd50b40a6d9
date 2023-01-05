@@ -1,0 +1,75 @@
+package com.hostmdy.lawfirm.domain;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+public class Lawer {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY )
+	private Long lawerId;
+	
+	@NotBlank(message="Lawer name should not be balnk")
+	private String name;
+	
+	@NotNull(message="Write down your total cases")
+	private  Integer noOfCases;
+	
+	private  Integer noOfSuccessCases;
+	
+	private Integer noOfFailCases;
+	
+	@NotBlank(message="address must be filled")
+	private  String address;
+	
+	@NotBlank(message="your nrc must be filled")
+	private String nrc;
+	
+	@NotBlank(message="Your ph no must be fillded")
+	private  String phNo;
+	
+	private Boolean status;
+//	
+//	@ManyToOne(fetch=FetchType.LAZY)
+//	private Admin admin;
+	
+	@OneToMany(mappedBy = "lawer",fetch=FetchType.EAGER,
+			cascade=CascadeType.REFRESH)
+	private List<Cases>cases = new ArrayList<>();
+
+	public Lawer(Long lawerId, @NotBlank(message = "Lawer name should not be balnk") String name,
+			@NotBlank(message = "Write down your total cases") Integer noOfCases, Integer noOfSuccessCases,
+			Integer noOfFailCases, @NotBlank(message = "address must be filled") String address,
+			@NotBlank(message = "your nrc must be filled") String nrc,
+			@NotBlank(message = "Your ph no must be fillded") String phNo, Boolean status) {
+		super();
+		this.lawerId = lawerId;
+		this.name = name;
+		this.noOfCases = noOfCases;
+		this.noOfSuccessCases = noOfSuccessCases;
+		this.noOfFailCases = noOfFailCases;
+		this.address = address;
+		this.nrc = nrc;
+		this.phNo = phNo;
+		this.status = status;
+	}
+	
+	
+ 
+}

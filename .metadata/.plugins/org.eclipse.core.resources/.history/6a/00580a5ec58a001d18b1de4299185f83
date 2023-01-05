@@ -1,0 +1,32 @@
+package com.hostmdy.lawfirm.service.serviceImpl;
+
+import java.util.List;
+
+import com.hostmdy.lawfirm.domain.Lawer;
+import com.hostmdy.lawfirm.repository.LawerRepository;
+import com.hostmdy.lawfirm.service.LawerService;
+
+public class LawerServiceImpl implements LawerService {
+
+	 private final LawerRepository lawerRepository;
+	
+	 
+	 
+	public LawerServiceImpl(LawerRepository lawerRepository) {
+		super();
+		this.lawerRepository = lawerRepository;
+	}
+
+	@Override
+	public Lawer saveOrUpdate(Lawer lawer) {
+		// TODO Auto-generated method stub
+		return lawerRepository.save(lawer);
+	}
+
+	@Override
+	public List<Lawer> findAll() {
+		// TODO Auto-generated method stub
+		return (List<Lawer>) lawerRepository.findAll();
+	}
+
+}

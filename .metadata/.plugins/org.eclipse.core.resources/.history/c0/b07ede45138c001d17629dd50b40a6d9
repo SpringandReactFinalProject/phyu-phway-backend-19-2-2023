@@ -1,0 +1,44 @@
+package com.hostmdy.lawfirm.domain;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@Table(name="Appoinment")
+public class Appointment {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	
+	
+
+	private LocalDate date;
+	
+	private LocalTime time;
+	
+	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.REFRESH)
+	private Cases cases;
+	
+	
+	@ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.REFRESH)
+	private Lawer lawer;
+	
+	
+	@ManyToOne(fetch=FetchType.EAGER,
+			cascade=CascadeType.REFRESH)
+	private User user;
+}

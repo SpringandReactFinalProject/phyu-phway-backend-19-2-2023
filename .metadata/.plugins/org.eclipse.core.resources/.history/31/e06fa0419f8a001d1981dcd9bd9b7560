@@ -1,0 +1,16 @@
+package com.hostmdy.lawfirm.domain;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Entity
+@Data
+public class user {
+	private Long userId;
+	private String name;
+	private String nrc;
+	private String email;
+	private String phoneNo;
+	private String address;
+
+}

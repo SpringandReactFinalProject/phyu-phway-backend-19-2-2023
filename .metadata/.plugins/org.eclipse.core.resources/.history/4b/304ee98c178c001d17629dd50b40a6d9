@@ -1,0 +1,16 @@
+package com.hostmdy.lawfirm.resource;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hostmdy.lawfirm.service.UserService;
+import com.hostmdy.lawfirm.service.ValidationErrorsMapService;
+
+@RestController
+@RequestMapping("/api/lawfirm")
+public class UserController {
+	
+	private final UserService userService;
+	private final ValidationErrorsMapService errorMapService;
+
+}
