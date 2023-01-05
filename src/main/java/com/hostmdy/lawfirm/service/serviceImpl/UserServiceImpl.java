@@ -1,0 +1,50 @@
+package com.hostmdy.lawfirm.service.serviceImpl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hostmdy.lawfirm.domain.User;
+import com.hostmdy.lawfirm.repository.UserRepository;
+import com.hostmdy.lawfirm.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+ private final UserRepository userRepository;	
+ 
+ 
+    @Autowired
+	public UserServiceImpl(UserRepository userRepository) {
+	super();
+	this.userRepository = userRepository;
+}
+
+	@Override
+	public User saveOrUpdate(User user) {
+		
+		// TODO Auto-generated method stub
+		return userRepository.save(user);
+		}
+
+	@Override
+	public List<User> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Optional<User> findById(Long id) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
