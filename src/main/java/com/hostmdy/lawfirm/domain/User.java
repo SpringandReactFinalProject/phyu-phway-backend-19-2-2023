@@ -1,66 +1,59 @@
 package com.hostmdy.lawfirm.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "Users")
+@AllArgsConstructor
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long userId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
-	@NotBlank(message="Fullname must be filled")
-	private String fullName;
-	
-	@Email(message="email is required")
-	@NotBlank(message="email is required")
-	@Column(unique = true)
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String address;
+	private Double cost;
+	private String nrc;
+	private String phoneNo;
+	private String photo;
+	private Boolean status;
+	private String accountName;
+	private Role role;
 	private String email;
-	
-	@NotBlank(message="password is required")
 	private String password;
 	
-	@Transient
-	private String confirmPassword;
+	public User(String firstName, String middleName, String lastName, String address, Double cost, String nrc,
+			String phoneNo, String photo, Boolean status, String accountName, Role role, String email,
+			String password) {
+		super();
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.address = address;
+		this.cost = cost;
+		this.nrc = nrc;
+		this.phoneNo = phoneNo;
+		this.photo = photo;
+		this.status = status;
+		this.accountName = accountName;
+		this.role = role;
+		this.email = email;
+		this.password = password;
+	}
 	
-	@NotBlank(message="NRC is required")
-	@Column(unique = true)
-	private String nrc;
-	
-	@NotBlank(message="Phnone is required")
-	private String phoneNo;
-	
-	@NotBlank(message="Address is required")
-	private String address;
 	
 	
 	
-	@OneToMany(mappedBy = "user",fetch=FetchType.EAGER,
-			cascade=CascadeType.REFRESH)
-	private List<Cases>cases = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "user",
-			fetch=FetchType.EAGER,
-			cascade=CascadeType.REFRESH)
-	private List<Appointment> appointment= new ArrayList<>();
 
 }

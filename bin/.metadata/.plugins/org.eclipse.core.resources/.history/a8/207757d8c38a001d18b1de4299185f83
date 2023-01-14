@@ -1,0 +1,7 @@
+package com.hostmdy.lawfirm.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+public interface LawerRepository extends CrudRepository<Lawer, Long> {
+
+}

@@ -1,0 +1,15 @@
+package com.hostmdy.lawfirm;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Entity
+@Data
+public class admin {
+	
+	private Long id;
+	private String userName;
+	private String email;
+	private String password;
+
+}

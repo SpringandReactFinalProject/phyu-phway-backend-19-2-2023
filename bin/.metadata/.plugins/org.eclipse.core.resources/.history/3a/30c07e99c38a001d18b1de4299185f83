@@ -1,0 +1,5 @@
+package com.hostmdy.lawfirm.repository;
+
+public interface LawerRepository {
+
+}

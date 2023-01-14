@@ -1,0 +1,40 @@
+package com.hostmdy.lawfirm.resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hostmdy.lawfirm.domain.Lawer;
+import com.hostmdy.lawfirm.service.LawerService;
+
+import jakarta.validation.Valid;
+
+@RestController
+@RequestMapping("/api/lawfirm")
+public class LawerController {
+
+	
+ private final LawerService lawerService;
+	
+
+	@Autowired
+	public LawerController(LawerService lawerService) {
+		super();
+		this.lawerService = lawerService;
+	}
+	
+	
+	//@RequestMapping(value="/create",method = RequestMethod.POST)
+	@PostMapping("/create")
+	public ResponseEntity<Lawer> createLawer (@Valid @RequestBody Lawer lawer){
+		Lawer createLawer = lawerService.saveOrUpdate(lawer);
+		
+		
+		return new ResponseEntity<Lawer>(createLawer,HttpStatus.CREATED);
+		
+	}
+}
