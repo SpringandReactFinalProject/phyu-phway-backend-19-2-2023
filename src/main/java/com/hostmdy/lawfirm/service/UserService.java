@@ -1,5 +1,5 @@
 package com.hostmdy.lawfirm.service;
 
-public interface LawFirmService {
+public interface UserService {
 
 }

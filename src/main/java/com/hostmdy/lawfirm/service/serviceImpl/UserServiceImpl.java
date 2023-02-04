@@ -2,9 +2,9 @@ package com.hostmdy.lawfirm.service.serviceImpl;
 
 import org.springframework.stereotype.Service;
 
-import com.hostmdy.lawfirm.service.LawFirmService;
+import com.hostmdy.lawfirm.service.UserService;
 
 @Service
-public class LawFirmServiceImpl implements LawFirmService{
+public class UserServiceImpl implements UserService{
 
 }

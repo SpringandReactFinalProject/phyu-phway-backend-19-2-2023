@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.hostmdy.lawfirm.domain.User;
 
-public interface LawFirmRepository extends CrudRepository<User, Long>{
+public interface UserRepository extends CrudRepository<User, Long>{
 
 }
