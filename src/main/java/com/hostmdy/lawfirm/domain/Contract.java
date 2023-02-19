@@ -37,17 +37,17 @@ public class Contract {
 	//one contract has one case (one case is created for one contract)
 	private LocalDate contractDate;
 	
-	
+	//ma chit su
 	//one contract has one case (want case id in contract table)
-	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinColumn(name = "case_id",nullable = true)
-	@JsonIgnore
-	private Cases cases;
-	
-	@JsonIgnore
-	@OneToOne(mappedBy = "contract",cascade = CascadeType.ALL
-	,fetch = FetchType.EAGER)
-	private Payment payment;
+//	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//	@JoinColumn(name = "case_id",nullable = true)
+//	@JsonIgnore
+//	private Cases cases;
+//	
+//	@JsonIgnore
+//	@OneToOne(mappedBy = "contract",cascade = CascadeType.ALL
+//	,fetch = FetchType.EAGER)
+//	private Payment payment;
 	
 	
   

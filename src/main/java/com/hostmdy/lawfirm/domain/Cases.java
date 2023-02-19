@@ -28,9 +28,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Cases {
 	
-	
-	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -40,7 +37,6 @@ public class Cases {
 
 	@NotBlank(message = "Description Title must be filled")
 	private String description;
-
 
 	private String caseStatus;
 	
@@ -56,6 +52,21 @@ public class Cases {
 
 	private LocalDate endDate;
 	private LocalTime endTime;
+	
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name = "category_id")
+	@JsonIgnore
+	private Category category;
+
+	
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "court_id")
+	@JsonIgnore
+	private Court court;
+
+
+
 
 //	@OneToOne(mappedBy = "cases",cascade = CascadeType.ALL,
 //			fetch = FetchType.EAGER)

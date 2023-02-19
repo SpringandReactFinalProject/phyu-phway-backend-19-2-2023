@@ -32,26 +32,44 @@ import jakarta.validation.Valid;
 public class CasesController {
 
 	private final CasesService casesService;
-	private final ContractRepository contractRepository;
+	//private final ContractRepository contractRepository;
 	private final MapValidationErrorService errorMapService;
 
 	@Autowired
-	public CasesController(CasesService casesService, MapValidationErrorService errorMapService,
-			ContractRepository contractRepository) {
+	public CasesController(CasesService casesService, MapValidationErrorService errorMapService
+			) {
 		super();
 		this.casesService = casesService;
-		this.contractRepository = contractRepository;
+		//this.contractRepository = contractRepository;
 		this.errorMapService = errorMapService;
 	}
 
 	//@PostMapping("/user/{userId}/create")
 	//@PostMapping("/create")
-	@PostMapping("/create/{contractId}")
+	//ma chit su
+//	@PostMapping("/create/{contractId}")
+//	public ResponseEntity<?> createCases(@Valid @RequestBody Cases cases,
+//			BindingResult result,@PathVariable Long contractId) {
+//		
+//		System.out.println("Contract Id is"+contractId);
+//
+//		ResponseEntity<?> responseErrorObject = errorMapService.validate(result);
+//
+//		if (responseErrorObject != null)
+//			return responseErrorObject;
+//		
+//		//Long contractId=id;
+//
+//		Cases createCase = casesService.saveOrUpdate(cases,contractId);
+//		return new ResponseEntity<Cases>(createCase, HttpStatus.CREATED);
+//
+//	}
+	@PostMapping("/create/{id}")
 	public ResponseEntity<?> createCases(@Valid @RequestBody Cases cases,
-			BindingResult result,@PathVariable Long contractId) {
+			BindingResult result,@PathVariable Long id) {
 		
-		System.out.println("Contract Id is"+contractId);
-
+		System.out.println("category Id is"+id);
+	
 		ResponseEntity<?> responseErrorObject = errorMapService.validate(result);
 
 		if (responseErrorObject != null)
@@ -59,10 +77,29 @@ public class CasesController {
 		
 		//Long contractId=id;
 
-		Cases createCase = casesService.saveOrUpdate(cases,contractId);
+		Cases createCase = casesService.saveOrUpdate(cases,id);
 		return new ResponseEntity<Cases>(createCase, HttpStatus.CREATED);
 
 	}
+	
+	@PostMapping("/update")
+	public ResponseEntity<?> updateCase(@Valid @RequestBody Cases cases,
+			BindingResult result) {
+		
+
+	
+		ResponseEntity<?> responseErrorObject = errorMapService.validate(result);
+
+		if (responseErrorObject != null)
+			return responseErrorObject;
+		
+		//Long contractId=id;
+
+		Cases updateCase = casesService.updateCase(cases);
+		return new ResponseEntity<Cases>(updateCase, HttpStatus.CREATED);
+
+	}
+	
 
 	@GetMapping("/all")
 	public List<Cases>findCases() {
@@ -88,10 +125,10 @@ public class CasesController {
 	}
 
 	@DeleteMapping("id/{id}")
-	public ResponseEntity<String> deleteById(@PathVariable Long id) {
+	public ResponseEntity<Number> deleteById(@PathVariable Long id) {
 
 		casesService.deleteById(id);
-		return new ResponseEntity<String>("Delelte id=" + id + "is deleted", HttpStatus.OK);
+		return new ResponseEntity<Number>(id,HttpStatus.OK);
 	}
 
 }

@@ -37,15 +37,15 @@ public class CourtController {
 		this.mapErrorService = mapErrorService;
 	}
 	
-	@PostMapping("/create")
-	public ResponseEntity<?> createCourt(@Valid @RequestBody Court court,BindingResult result){
-		
+	@PostMapping("/create/{caseId}")
+	public ResponseEntity<?> createCourt(@Valid @RequestBody Court court,BindingResult result,@PathVariable Long caseId){
+		System.out.println("Case id is" +caseId );
 		ResponseEntity<?> responseErrorObject = mapErrorService.validate(result);
 		
 		if(responseErrorObject != null) {
 			return responseErrorObject;
 		}
-		Court createdCourt = courtService.SaveOrUpdate(court);
+		Court createdCourt = courtService.SaveOrUpdate(court,caseId);
 		//Category createdCategory = categoryService.SaveOrUpdate(category, Number(id));
 		
 		

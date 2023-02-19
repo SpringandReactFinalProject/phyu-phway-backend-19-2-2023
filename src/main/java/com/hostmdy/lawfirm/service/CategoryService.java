@@ -14,12 +14,14 @@ public interface CategoryService {
 //	
 //	Category Update(Long id,String description);
 	
-	
+
 	List<Category> findAll();
 	
 	Optional<Category> findById(Long id);
 	
 	void deleteById(Long id);
+	
+	Category updateCategory (Category category);
 	
 	
 	

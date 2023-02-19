@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hostmdy.lawfirm.domain.Cases;
 import com.hostmdy.lawfirm.domain.Category;
 import com.hostmdy.lawfirm.repository.CategoryRepository;
 import com.hostmdy.lawfirm.service.CategoryService;
@@ -57,6 +58,19 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		categoryRepository.deleteById(categoryOptional.get().getId());
 		
+	}
+
+	@Override
+	public Category updateCategory(Category category) {
+		// TODO Auto-generated method stub
+		Long categoryId = category.getId();
+		Cases cases = categoryRepository.findById(categoryId).get().getCases();
+		
+		if(cases != null) {
+			category.setCases(cases);
+			cases.setCategory(category);
+		}
+		return categoryRepository.save(category);
 	}
 
 

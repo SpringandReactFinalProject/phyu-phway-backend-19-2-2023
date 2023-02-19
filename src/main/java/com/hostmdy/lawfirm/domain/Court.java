@@ -27,11 +27,11 @@ public class Court {
 	private String township;
 	private String city;
 	
-//	@OneToMany(mappedBy = "court",fetch = FetchType.EAGER,
-//			cascade = CascadeType.REFRESH,orphanRemoval = true)
-//	@JsonIgnore
-//	private List<Cases> cases = new ArrayList<>();
-	
+	@OneToMany(mappedBy = "court",fetch = FetchType.EAGER,
+			cascade = CascadeType.REFRESH,orphanRemoval = true)
+	@JsonIgnore
+	private List<Cases> cases = new ArrayList<>();
+//	
 	public Court(Long id, String courtName, String address, String township, String city) {
 		super();
 		this.id = id;

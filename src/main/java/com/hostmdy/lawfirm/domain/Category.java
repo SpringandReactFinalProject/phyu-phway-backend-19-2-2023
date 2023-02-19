@@ -34,11 +34,13 @@ public class Category {
 	
 	@NotBlank(message = "Description should not be blank")
 	private String description;
-//	
-//	@OneToOne(mappedBy = "category",cascade = CascadeType.ALL
-//			,fetch = FetchType.EAGER)
-//	@JsonIgnore
-//	private Cases cases;
+	
+	
+	@OneToOne(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, orphanRemoval = true)
+
+	@JsonIgnore
+	private Cases cases;
+
 	
 	
 	public Category(String categoryName, String description) {

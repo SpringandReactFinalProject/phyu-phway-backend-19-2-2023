@@ -59,18 +59,18 @@ public class ContractController {
 
 	}
 	
-	@PatchMapping("/update")
-	public ResponseEntity<?> updateContract(@Valid @RequestBody  Contract contract,
-			BindingResult result){
-		ResponseEntity<?> responseErrorObject = errorMapService.validate(result);
-		
-		if(responseErrorObject!= null)
-			return responseErrorObject;
-		
-		Contract updatedContract = contractService.updateContract(contract);
-		
-		 return new ResponseEntity<Contract>(updatedContract,HttpStatus.OK);
-		}
+//	@PatchMapping("/update")
+//	public ResponseEntity<?> updateContract(@Valid @RequestBody  Contract contract,
+//			BindingResult result){
+//		ResponseEntity<?> responseErrorObject = errorMapService.validate(result);
+//		
+//		if(responseErrorObject!= null)
+//			return responseErrorObject;
+//		
+//		Contract updatedContract = contractService.updateContract(contract);
+//		
+//		 return new ResponseEntity<Contract>(updatedContract,HttpStatus.OK);
+//		}
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Contract>> findContract() {

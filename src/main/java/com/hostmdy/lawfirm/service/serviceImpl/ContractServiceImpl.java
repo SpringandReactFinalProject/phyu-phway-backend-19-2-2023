@@ -50,22 +50,23 @@ public class ContractServiceImpl implements ContractServices  {
 		
 	}
 
-	@Override
-	public Contract updateContract(Contract contract) {
-		// TODO Auto-generated method stub
-		//get original associated case object of contract
-		Long contractId=contract.getId();
-		Cases cases=contractRepository.findById(contractId).get().getCases();
-		
-		if(cases !=null) {
-			//contract-case
-			contract.setCases(cases);
-			//cases.setContract(contract);
-			
-		}				
-				
-				return contractRepository.save(contract);
-		
-	}
+	//ma chit su
+//	@Override
+//	public Contract updateContract(Contract contract) {
+//		// TODO Auto-generated method stub
+//		//get original associated case object of contract
+//		Long contractId=contract.getId();
+//		Cases cases=contractRepository.findById(contractId).get().getCases();
+//		
+//		if(cases !=null) {
+//			//contract-case
+//			contract.setCases(cases);
+//			//cases.setContract(contract);
+//			
+//		}				
+//				
+//				return contractRepository.save(contract);
+//		
+//	}
 
 }

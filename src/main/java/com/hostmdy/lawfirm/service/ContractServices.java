@@ -18,6 +18,7 @@ public interface ContractServices {
 	
 	void deleteById(Long id);
 
-	Contract updateContract(Contract contract) ;
+	//ma chit su
+	//Contract updateContract(Contract contract) ;
 	
 }
